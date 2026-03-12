@@ -35,7 +35,7 @@ namespace BlogSite.Pages_Posts
                 return Page();
             }
 
-            _context.Post.Add(Post);
+            _context.Posts.Add(Post);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

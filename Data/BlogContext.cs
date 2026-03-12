@@ -8,6 +8,6 @@ public class BlogContext : DbContext
     public BlogContext(DbContextOptions<BlogContext> options)
         : base(options) { }
 
-    public DbSet<Post> Post { get; set; } = default!; // database table
+    public DbSet<Post> Posts { get; set; } = default!; // database table
 
 }

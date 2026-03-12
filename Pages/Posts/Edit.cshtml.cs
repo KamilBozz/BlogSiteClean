@@ -30,7 +30,7 @@ namespace BlogSite.Pages_Posts
                 return NotFound();
             }
 
-            var post =  await _context.Post.FirstOrDefaultAsync(m => m.Id == id);
+            var post =  await _context.Posts.FirstOrDefaultAsync(m => m.Id == id);
             if (post == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace BlogSite.Pages_Posts
 
         private bool PostExists(int id)
         {
-            return _context.Post.Any(e => e.Id == id);
+            return _context.Posts.Any(e => e.Id == id);
         }
     }
 }

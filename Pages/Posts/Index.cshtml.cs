@@ -23,7 +23,7 @@ namespace BlogSite.Pages_Posts
 
         public async Task OnGetAsync()
         {
-            Post = await _context.Post.ToListAsync();
+            Post = await _context.Posts.ToListAsync();
         }
     }
 }

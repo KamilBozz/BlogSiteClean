@@ -4,7 +4,30 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="text-center">My Posts</h1>
+
+<div class="row">
+    <div class="col-md-2 d-flex flex-column gap-3">
+        <a asp-page="/Posts/Create" class="btn btn-primary btn-sm">New Post</a>
+        <a asp-page="/Authors/Create" class="btn btn-primary btn-sm">New Author</a>
+        <a asp-page="/Categories/Create" class="btn btn-primary btn-sm">New Category</a>
+    </div>
+
+    <div class="col-md-7">
+        @foreach(var post in Model.Posts) {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">@post.Title</h6>
+                    <p class="card-text">@post.Excerpt</p>
+                    <a asp-page="/Posts/Details" asp-route-id="@post.Id">Read More</a>
+                </div>
+            </div>
+            <h3>@post.Title</h3>
+        }
+    </div>
+
+    <div class="col-md-3">
+        <h3>Categories</h3>
+    </div>
+    
 </div>

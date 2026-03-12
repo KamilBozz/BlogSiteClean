@@ -29,7 +29,7 @@ namespace BlogSite.Pages_Posts
                 return NotFound();
             }
 
-            var post = await _context.Post.FirstOrDefaultAsync(m => m.Id == id);
+            var post = await _context.Posts.FirstOrDefaultAsync(m => m.Id == id);
 
             if (post is not null)
             {
@@ -48,11 +48,11 @@ namespace BlogSite.Pages_Posts
                 return NotFound();
             }
 
-            var post = await _context.Post.FindAsync(id);
+            var post = await _context.Posts.FindAsync(id);
             if (post != null)
             {
                 Post = post;
-                _context.Post.Remove(Post);
+                _context.Posts.Remove(Post);
                 await _context.SaveChangesAsync();
             }
 
