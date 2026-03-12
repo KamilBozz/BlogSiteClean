@@ -21,6 +21,8 @@ public class IndexModel : PageModel
     public async Task OnGetAsync()
     {
         Posts = await _context.Posts
+            .Include(p => p.Author)
+            .Include(p => p.Category)
             .ToListAsync();
     }
 }

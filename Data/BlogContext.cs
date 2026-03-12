@@ -9,5 +9,6 @@ public class BlogContext : DbContext
         : base(options) { }
 
     public DbSet<Post> Posts { get; set; } = default!; // database table
-
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Category> Categories { get; set; }
 }
