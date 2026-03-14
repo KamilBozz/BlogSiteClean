@@ -33,6 +33,14 @@
 
     <div class="col-md-3">
         <h3>Categories</h3>
+        <ul>
+            @foreach(var cat in Model.Categories) {
+                <h6>@cat.Key</h6>
+                @foreach(var post in cat.Value) {
+                    <li><a asp-page="/Posts/Details" asp-route-id="@post.Id">@post.Title</a></li>
+                }
+            }
+        </ul>
     </div>
     
 </div>

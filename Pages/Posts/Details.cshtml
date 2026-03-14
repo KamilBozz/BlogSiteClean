@@ -13,7 +13,12 @@
     </div>
 
     <div class="col-md-4">
-        <h3>Related posts</h3>
+        <h2>Related posts</h2>
+        @foreach(var posts in Model.Posts) {
+            <ul>
+                <li><a asp-page="/Posts/Details" asp-route-id="@posts.Id">@posts.Title</a></li>
+            </ul>
+        }
     </div>
 </div>
 <div>

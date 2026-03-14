@@ -18,11 +18,17 @@ public class IndexModel : PageModel
 
     public List<Post> Posts { get; set; }
 
+    public Dictionary<string, List<Post>> Categories { get; set; }
+
     public async Task OnGetAsync()
     {
         Posts = await _context.Posts
             .Include(p => p.Author)
             .Include(p => p.Category)
             .ToListAsync();
+
+        Categories = Posts
+            .GroupBy(p => p.Category.Name)
+            .ToDictionary(g => g.Key, g => g.ToList());
     }
 }

@@ -18,6 +18,8 @@ namespace BlogSite.Pages_Posts
         {
             _context = context;
         }
+        
+        public List<Post> Posts { get; set; }
 
         public Post Post { get; set; } = default!;
 
@@ -33,7 +35,10 @@ namespace BlogSite.Pages_Posts
             if (post is not null)
             {
                 Post = post;
-
+                Posts = await _context.Posts
+                    .Include(p => p.Category)
+                    .Where(p => p.CategoryId == post.CategoryId && p.Id != post.Id)
+                    .ToListAsync();
                 return Page();
             }
 
